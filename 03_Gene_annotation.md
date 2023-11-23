@@ -11,6 +11,7 @@ Notes: Gene prediction was based on genome.maked.fa, which was masked repeat seq
 Training gene sets for P. pungitius following the Augustus mannual:
 https://vcru.wisc.edu/simonlab/bioinformatics/programs/augustus/docs/tutorial2015/training.html
 
+
 Split genome.masked.fa into `chr.masked.fa`:
 
 perl 01.split.fa.pl genome.masked.fa
