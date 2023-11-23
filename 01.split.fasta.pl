@@ -1,3 +1,5 @@
+## This Script was used to split genome.fa to chr.fa
+
 use strict;
 use warnings;
 use Bio::SeqIO;
