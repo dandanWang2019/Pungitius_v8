@@ -126,6 +126,6 @@ Run EVM and save log file:
 
 /EvmUtils/execute_EVM_commands.pl commands.list | tee run.log
 
-COmbine `.gff` file of each chromosome reaults:
+Combine `.gff` file of each chromosome reaults:
 
 /EvmUtils/convert_EVM_outputs_to_GFF3.pl --partitions partitions_list.out --output_file_name evm.out --genome chr.masked.fasta
