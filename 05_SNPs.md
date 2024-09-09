@@ -13,6 +13,15 @@ gatk --java-options "-Xmx4g" HaplotypeCaller \
 ```
 
 ### Combine individual-GVCF to chromosome-level GVCF
+```bat
+LG=$(sed -n ${SLURM_ARRAY_TASK_ID}p LG.list)
+
+gatk --java-options "-Xmx30g" CombineGVCFs \
+-R /scratch/project_2006483/genomes/v7_ENA/NSPV7.GCA_902500615.3.fasta \
+--intervals ${LG} \
+--variant ./01.gvcf/*.gvcf.gz \
+-O 02.combineGVCF/${LG}.gvcf.gz
+```
 
 ### assign genotypes for each sites and convert GVCF to VCF
 ```bat
