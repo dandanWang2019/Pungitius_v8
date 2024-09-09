@@ -70,7 +70,7 @@ samtools sort -n 01.bam/${ind}.LG12_LG22.bam -O bam -o 02.sort.bam/${ind}.LG12_L
 bamToFastq -i 02.sort.bam/${ind}.LG12_LG22.sorted.bam -fq 03.reads/${ind}.LG12_LG22.fq
 ```
 
-## remap reads on LG12
+### remap reads on LG12
 ```bat
 PL=DNBseq
 
