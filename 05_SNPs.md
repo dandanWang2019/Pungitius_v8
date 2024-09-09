@@ -83,10 +83,10 @@ Get final SNP set for downstream analysis
 ```bat
 LG=$(sed -n ${SLURM_ARRAY_TASK_ID}p LG.list)
 
-bcftools view 06.hardFilter/v7_${LG}.snp.HDflted.vcf.gz \
+bcftools view 06.hardFilter/${LG}.snp.HDflted.vcf.gz \
 | vcftools --vcf - --minGQ 20 --minQ 30 --min-meanDP 3 --max-meanDP 35 \
---maf 0.05 --remove-indels --max-missing 0.2 \
+--maf 0.05 --remove-indels --max-missing 0.2 --exclude-bed repeat.bed \
 --recode --recode-INFO-all --out ${LG} -c \
-| bcftools view -Oz -o 07.flt/v7_${LG}_snp_flted.vcf.gz
+| bcftools view -Oz -o 07.flt/${LG}_snp_flted.vcf.gz
 ```
 
