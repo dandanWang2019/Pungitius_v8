@@ -76,3 +76,17 @@ perl remove.hdfilter.pl --input 06.hardFilter/v7_${LG}.snp.HDflt.vcf.gz --out 06
 
 perl remove.hdfilter.pl --input	06.hardFilter/v7_${LG}.indel.HDflt.vcf.gz --out 06.hardFilter/v7_${LG}.indel.HDflted.vcf.gz --type INDEL --marker my_indel_filter
 ```
+
+### Manually Filter
+Get final SNP set for downstream analysis
+
+```bat
+LG=$(sed -n ${SLURM_ARRAY_TASK_ID}p LG.list)
+
+bcftools view 06.hardFilter/v7_${LG}.snp.HDflted.vcf.gz \
+| vcftools --vcf - --minGQ 20 --minQ 30 --min-meanDP 3 --max-meanDP 35 \
+--maf 0.05 --remove-indels --max-missing 0.2 \
+--recode --recode-INFO-all --out ${LG} -c \
+| bcftools view -Oz -o 07.flt/v7_${LG}_snp_flted.vcf.gz
+```
+
